@@ -7,6 +7,8 @@ baseurl: "/blog"
 # Ana sayfada en fazla 5 içerik listelemek için sayfalama eklentisi
 plugins:
   - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
 
 paginate: 5
 paginate_path: "/page:num/"
