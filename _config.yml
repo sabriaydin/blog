@@ -1,0 +1,12 @@
+# _config.yml
+title: Blog Başlığı
+description: Koyu tonlarda, pratik güncellenebilen GitHub Pages blog teması.
+url: "" # Canlıya alırken GitHub Pages URL'nizi buraya gireceksiniz
+baseurl: ""
+
+# Ana sayfada en fazla 5 içerik listelemek için sayfalama eklentisi
+plugins:
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: "/page:num/"
