@@ -1,8 +1,8 @@
 # _config.yml
 title: Blog Başlığı
 description: Koyu tonlarda, pratik güncellenebilen GitHub Pages blog teması.
-url: "" # Canlıya alırken GitHub Pages URL'nizi buraya gireceksiniz
-baseurl: ""
+url: "https://sabriaydin.github.io"
+baseurl: "/blog"
 
 # Ana sayfada en fazla 5 içerik listelemek için sayfalama eklentisi
 plugins:
@@ -10,3 +10,5 @@ plugins:
 
 paginate: 5
 paginate_path: "/page:num/"
+
+future: true
