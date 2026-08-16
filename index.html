@@ -1,0 +1,33 @@
+<!-- index.html -->
+---
+layout: default
+---
+<div class="post-list">
+  {% for post in paginator.posts %}
+    <article class="post-summary">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <span class="post-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
+      <!-- Yazının kısa bir özetini gösteriyoruz -->
+      <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+    </article>
+  {% endfor %}
+</div>
+
+<!-- Sayfalama (İleri-Geri butonları) -->
+{% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}" class="btn-page">&laquo; Daha Yeni</a>
+    {% else %}
+      <span class="btn-page disabled">&laquo; Daha Yeni</span>
+    {% endif %}
+    
+    <span class="page-number">Sayfa {{ paginator.page }} / {{ paginator.total_pages }}</span>
+    
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}" class="btn-page">Daha Eski &raquo;</a>
+    {% else %}
+      <span class="btn-page disabled">Daha Eski &raquo;</span>
+    {% endif %}
+  </div>
+{% endif %}
