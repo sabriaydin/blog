@@ -1,3 +1,137 @@
+---
+---
+/* assets/css/style.css */
+body {
+  background-color: #1e2127; /* Kurumsal koyu lacivert/gri */
+  color: #abb2bf; /* Okunabilir açık gri */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Üst Kısım (Header) */
+.site-header {
+  background-color: #181a1f;
+  padding: 20px 0;
+  border-bottom: 2px solid #282c34;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.site-title a {
+  color: #61afef; /* Bilişim dünyasını yansıtan teknik mavi */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.site-nav a {
+  color: #5c6370;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.site-nav a:hover {
+  color: #98c379; /* Üzerine gelince terminal yeşili efekti */
+}
+
+/* Ana İçerik */
+main {
+  padding: 40px 0;
+  min-height: 60vh;
+}
+
+a {
+  color: #61afef;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Yazı Listesi */
+.post-summary {
+  background-color: #21252b;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 4px; /* Daha keskin ve resmi hatlar */
+  border: 1px solid #282c34;
+  border-left: 4px solid #61afef; /* Sol tarafta kurumsal vurgu */
+}
+
+.post-summary h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  font-size: 0.85em;
+  color: #5c6370;
+  display: block;
+  margin-bottom: 15px;
+  font-family: monospace; /* Tarih kısmında teknik vurgu */
+}
+
+/* Sayfalama (Pagination) */
+.pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-page {
+  background-color: #282c34;
+  color: #abb2bf;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid #3e4451;
+  transition: all 0.2s ease;
+}
+
+.btn-page:hover {
+  background-color: #61afef;
+  color: #282c34;
+  text-decoration: none;
+}
+
+.btn-page.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-page.disabled:hover {
+  background-color: #282c34;
+  color: #abb2bf;
+}
+
+/* Alt Kısım (Footer) */
+.site-footer {
+  text-align: center;
+  padding: 25px 0;
+  background-color: #181a1f;
+  border-top: 1px solid #282c34;
+  font-size: 0.9em;
+  color: #5c6370;
+}
+
 /* --- Bilişim Dünyasına Yakışır Ek Kurumsal Tasarım Eklentileri --- */
 
 /* Üst Kısım (Header) için derinlik ve gölge efekti */
