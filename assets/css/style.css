@@ -21,6 +21,10 @@ body {
   background-color: #181a1f;
   padding: 20px 0;
   border-bottom: 2px solid #282c34;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Yeni: Derinlik efekti */
+  position: sticky; /* Yeni: Yukarıda sabit kalma */
+  top: 0;
+  z-index: 100;
 }
 
 .site-header .container {
@@ -74,11 +78,18 @@ a:hover {
   border-radius: 4px; /* Daha keskin ve resmi hatlar */
   border: 1px solid #282c34;
   border-left: 4px solid #61afef; /* Sol tarafta kurumsal vurgu */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Yeni: Etkileşim animasyonu */
 }
 
 .post-summary h2 {
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+.post-summary:hover {
+  transform: translateY(-2px); /* Yeni: Tıklanabilirlik hissi */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  border-left: 4px solid #98c379;
 }
 
 .post-meta {
@@ -133,26 +144,6 @@ a:hover {
 }
 
 /* --- Bilişim Dünyasına Yakışır Ek Kurumsal Tasarım Eklentileri --- */
-
-/* Üst Kısım (Header) için derinlik ve gölge efekti */
-.site-header {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-/* Makale özet kutuları için etkileşimli vurgu */
-.post-summary {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.post-summary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  border-left: 4px solid #98c379; /* Üzerine gelince terminal yeşiline dönüş */
-}
-
 /* Bilişim makaleleri için teknik kod bloğu biçimlendirmesi */
 pre, code {
   background-color: #282c34;
