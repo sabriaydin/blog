@@ -6,196 +6,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
-  <!-- Stil dosyamızı bağlıyoruz (Eski bağ oluşturucu yerinde bırakıldı) -->
+  <!-- Stil dosyamızı bağlıyoruz -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   
-  <!-- KESİN ÇÖZÜM: Tasarımı doğrudan sayfaya gömüyoruz -->
+  <!-- SİL BAŞTAN YARATILAN PREMIUM TASARIM -->
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
     body {
-      background-color: #f8f9fa; /* Göz yormayan çok hafif gri/beyaz arka plan */
-      color: #333333; /* Net ve okunabilir koyu gri metin */
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.7;
+      background-color: #f3f4f6; /* Modern açık gri arka plan */
+      color: #1f2937;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
       margin: 0;
       padding: 0;
       -webkit-font-smoothing: antialiased;
-      box-sizing: border-box;
     }
-    *, *::before, *::after {
-      box-sizing: inherit;
-    }
+
     .container {
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 0 24px;
     }
+
+    /* Simetrik ve Temiz Header */
     .site-header {
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 15px 0;
-      border-bottom: 1px solid #eaeaea;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* Çok hafif modern gölge */
+      background-color: #ffffff;
+      padding: 16px 0;
+      border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
       z-index: 100;
     }
+
     .site-header .container {
       display: flex;
-      justify-content: space-between; /* Başlığı sola, menüyü sağa yaslar */
+      justify-content: space-between; /* Başlık sola, menü sağa tam yaslı */
       align-items: center;
     }
+
     .site-title {
       margin: 0;
-      font-size: 1.5rem;
-      letter-spacing: -0.5px;
-    }
-    .site-title a {
-      color: #1a202c; /* Resmi ve güçlü başlık rengi */
-      text-decoration: none;
+      font-size: 1.4rem;
       font-weight: 800;
-      transition: color 0.3s ease;
+      letter-spacing: -0.02em;
     }
-    .site-title a:hover {
-      color: #0056b3; /* Bilişim mavisi */
+
+    .site-title a {
+      color: #111827;
+      text-decoration: none;
     }
+
     .site-nav {
       display: flex;
-      gap: 25px;
+      gap: 24px; /* Menü elemanları arası net boşluk */
     }
+
     .site-nav a {
-      color: #4a5568;
+      color: #4b5563;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-    .site-nav a:hover {
-      color: #0056b3;
-    }
-    main {
-      padding: 80px 0 50px 0; /* İçeriğin header'a yapışmasını engelleyen üst boşluk eklendi */
-      min-height: 60vh;
-    }
-    a {
-      color: #0056b3;
-      text-decoration: none;
       transition: color 0.2s ease;
     }
-    a:hover {
-      text-decoration: underline;
-      color: #003d82;
+
+    .site-nav a:hover {
+      color: #2563eb; /* Premium mavi vurgu */
     }
-    
-    /* Yaratıcı ve Modern Beyaz Kart Tasarımı */
+
+    main {
+      padding: 60px 0;
+      min-height: 70vh;
+    }
+
+    /* Bembeyaz ve Derinlikli İçerik Kartları */
     .post-summary {
-      background-color: #ffffff; /* İçerik arka planı tamamen beyaz */
-      padding: 35px;
-      margin-bottom: 35px;
-      border-radius: 12px; /* Daha modern yuvarlak hatlar */
-      border: 1px solid #edf2f7;
-      border-left: 5px solid #0056b3; /* Profesyonel sol vurgu çizgisi */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+      background-color: #ffffff;
+      padding: 40px;
+      margin-bottom: 32px;
+      border-radius: 16px; /* Modern yuvarlak köşeler */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      border: 1px solid #f3f4f6;
+      border-left: 6px solid #2563eb; /* Şık sol ayraç */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
+    .post-summary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
     .post-summary h2 {
-      margin-top: 0;
-      margin-bottom: 12px;
+      margin: 0 0 12px 0;
       font-size: 1.5rem;
+      font-weight: 700;
       line-height: 1.3;
     }
+
     .post-summary h2 a {
-      color: #2d3748;
+      color: #1f2937;
       text-decoration: none;
     }
+
     .post-summary h2 a:hover {
-      color: #0056b3;
+      color: #2563eb;
     }
+
+    .post-meta {
+      display: inline-block;
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 16px;
+      font-weight: 500;
+      background-color: #f3f4f6; /* Tarih için hap (pill) tasarımı */
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
     .post-summary p {
       margin: 0;
-      color: #4a5568;
+      color: #4b5563;
+      font-size: 1.05rem;
     }
-    .post-summary:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-    }
-    .post-meta {
-      font-size: 0.85em;
-      color: #718096;
-      display: inline-block;
-      margin-bottom: 15px;
-      font-family: "Fira Code", Consolas, monospace;
-      background: #f1f3f5; /* Açık temaya uygun meta arka planı */
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-weight: 500;
-    }
+
+    /* Sayfalama */
     .pagination {
-      margin-top: 40px;
-      padding-top: 20px;
+      margin-top: 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #e2e8f0;
     }
+
     .btn-page {
       background-color: #ffffff;
-      color: #4a5568;
-      padding: 10px 24px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e0;
+      color: #374151;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
       font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-page:hover {
-      background-color: #0056b3;
-      color: #ffffff;
-      border-color: #0056b3;
+      font-size: 0.9rem;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
+      transition: all 0.2s ease;
     }
+
+    .btn-page:hover:not(.disabled) {
+      border-color: #2563eb;
+      color: #2563eb;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
+    }
+
     .btn-page.disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background: transparent;
+      background-color: #f9fafb;
     }
-    .btn-page.disabled:hover {
-      color: #4a5568;
-      box-shadow: none;
-    }
+
     .page-number {
       font-size: 0.9rem;
       font-weight: 600;
-      color: #718096;
+      color: #6b7280;
     }
-    
-    /* Footer daraltıldı ve sadeleştirildi */
+
+    /* Daraltılmış ve Sade Footer */
     .site-footer {
       text-align: center;
-      padding: 15px 0; /* Çok büyük olan alan daraltıldı */
-      background-color: transparent;
-      border-top: 1px solid #e2e8f0;
-      font-size: 0.85em;
-      color: #a0aec0;
-      margin-top: 20px;
+      padding: 24px 0;
+      border-top: 1px solid #e5e7eb;
+      color: #9ca3af;
+      font-size: 0.875rem;
     }
-    
-    /* Açık temada kod blokları teknolojik görünüm için koyu bırakıldı */
-    pre, code {
-      background-color: #1e1e1e;
-      color: #d4d4d4;
-      border-radius: 6px;
-      font-family: "Fira Code", Consolas, Monaco, monospace;
-      padding: 2px 6px;
-      font-size: 0.9rem;
-    }
-    pre {
-      padding: 20px;
-      overflow-x: auto;
-      border: none;
-      border-left: 4px solid #007acc; /* Visual Studio Code mavi tonu */
-      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.2);
-      line-height: 1.5;
+
+    a {
+      color: #2563eb;
     }
   </style>
   
