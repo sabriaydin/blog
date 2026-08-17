@@ -2,7 +2,7 @@
 title: Blog Başlığı
 description: Koyu tonlarda, pratik güncellenebilen GitHub Pages blog teması.
 url: "https://sabriaydin.github.io"
-baseurl: "" 
+baseurl: "/blog"
 
 # Ana sayfada en fazla 5 içerik listelemek için sayfalama eklentisi
 plugins:
