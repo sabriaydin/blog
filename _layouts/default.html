@@ -12,12 +12,12 @@
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
-      --bg-color: #0f172a;        /* Derin modern koyu arkaplan (Gece Mavisi/Gri) */
-      --card-bg: #1e293b;         /* Kartlar için tok koyu ton */
-      --text-main: #f8fafc;       /* Tertemiz okunabilir beyaz */
-      --text-muted: #94a3b8;      /* İkincil gri metinler */
-      --accent: #38bdf8;          /* Canlı bilişim mavisi */
-      --border: #334155;          /* Şık sınır çizgileri */
+      --bg-color: #0f172a;        
+      --card-bg: #1e293b;         
+      --text-main: #f8fafc;       
+      --text-muted: #94a3b8;      
+      --accent: #38bdf8;          
+      --border: #334155;          
     }
 
     body {
@@ -41,8 +41,10 @@
     }
 
     .site-header .container {
-      max-width: 100% !important; /* Sınırlamayı kaldırıp tam genişlik yapıyoruz */
-      padding: 0 20px !important; /* Ekran kenarlarına tam yaslanması için boşluk daraltıldı */
+      max-width: 100% !important;
+      width: 100% !important; /* YENİ: Kısıtlamayı tamamen kaldırır */
+      box-sizing: border-box !important; /* YENİ: Taşmaları önler */
+      padding: 0 40px !important; /* Ekran kenarlarındaki boşluk (isteğe göre değiştirebilirsiniz) */
       display: flex;
       justify-content: space-between;
       align-items: center;
