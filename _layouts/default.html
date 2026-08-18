@@ -12,6 +12,286 @@
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
+      /* Arkaplan ve header renkleri yer değiştirdi */
+      --bg-color: #1e293b;        /* Body: Daha açık koyu ton */
+      --header-bg: #0f172a;       /* Header: Derin lacivert */
+      --footer-bg: #020617;       
+      
+      /* Post ve İçerik */
+      --card-bg: #ffffff;         
+      --text-dark: #1f2937;       
+      --heading-dark: #111827;    
+      
+      /* Genel Metinler */
+      --text-main: #f8fafc;       
+      --text-muted: #94a3b8;      
+      
+      /* Vurgular */
+      --accent: #38bdf8;          
+      --accent-dark: #0284c7;     
+      --border: #334155;          
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      /* Footer'ı alta itmek için Flexbox yapısı eklendi */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Genel Container */
+    .container {
+      max-width: 1000px; 
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: var(--header-bg);
+      border-bottom: 2px solid var(--accent); 
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      padding: 0 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .site-title a {
+      /* Havalı gradient başlık efekti */
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+
+    .site-title a:hover {
+      opacity: 0.8;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .site-nav a {
+      color: #ffffff; 
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .site-nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Ana İçerik Alanı */
+    main.container {
+      padding: 60px 20px;
+      /* İçeriği esneterek footer'ı daima en alta iter */
+      flex: 1; 
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Yazı Özetleri (Bağımsız Beyaz Kartlar) */
+    .post-summary {
+      background-color: var(--card-bg);
+      padding: 40px;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      border-left: 5px solid var(--accent-dark);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .post-summary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .post-summary h2 {
+      margin: 0 0 12px 0;
+      font-size: 1.6rem;
+    }
+
+    .post-summary h2 a {
+      color: var(--heading-dark);
+      text-decoration: none;
+    }
+
+    .post-summary h2 a:hover {
+      color: var(--accent-dark);
+    }
+
+    .post-meta {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #f8fafc; /* Beyaz metin */
+      background-color: #334155; /* Daha koyu ton ile belirginleştirildi */
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .post-summary p {
+      margin: 0;
+      color: var(--text-dark);
+      font-size: 1.05rem;
+    }
+
+    /* Sayfalama */
+    .pagination {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+    }
+
+    .btn-page {
+      background-color: var(--header-bg);
+      color: var(--text-main);
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-page:hover:not(.disabled) {
+      background-color: var(--accent);
+      color: #000000;
+    }
+
+    .btn-page.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .page-number {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Footer */
+    .site-footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      background-color: var(--footer-bg); 
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+
+    .site-footer a {
+      color: var(--accent);
+    }
+    
+    /* Tekil Yazı Sayfası (Post) - Bağımsız Beyaz Kart */
+    .post {
+      background-color: var(--card-bg);
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .post-header {
+      margin-bottom: 30px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 20px;
+    }
+
+    .post-title {
+      margin: 0 0 15px 0;
+      font-size: 2.4rem;
+      color: var(--heading-dark);
+    }
+
+    .post-content {
+      color: var(--text-dark); 
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .post-content h1, .post-content h2, .post-content h3 {
+      color: var(--heading-dark);
+      margin-top: 35px;
+    }
+    
+    .post-content ul, .post-content li {
+      margin-bottom: 10px;
+    }
+
+    .post-content a {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+  </style>
+  
+  {% seo %}
+</head>
+<body>
+  
+  <header class="site-header">
+    <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <nav class="site-nav">
+      <a href="{{ '/hakkimda' | relative_url }}">Hakkımda</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+</body>
+</html><!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+
+    :root {
       /* Farklı alanlar için farklı tonlar */
       --bg-color: #0f172a;        /* Body: Derin lacivert arkaplan */
       --header-bg: #1e293b;       /* Header: Daha açık gri/mavi ton */
