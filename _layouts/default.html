@@ -29,7 +29,14 @@
       padding: 0;
     }
 
-    /* Header'ı ekran geneline yayan ve başlığı sol, menüyü sağ kenara sabitleyen yapı */
+    /* Genel Container (İçerikleri ortada hizalar) */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header'ın kendisi (Tam ekran) */
     .site-header {
       background-color: rgba(15, 23, 42, 0.9);
       backdrop-filter: blur(10px);
@@ -40,15 +47,16 @@
       width: 100%;
     }
 
+    /* HEADER İÇİNDEKİ CONTAINER: Genel genişlik sınırını ezer, ekranın uçlarına yaslar */
     .site-header .container {
-      max-width: 100% !important;
-      width: 100% !important; /* YENİ: Kısıtlamayı tamamen kaldırır */
-      box-sizing: border-box !important; /* YENİ: Taşmaları önler */
-      padding: 0 40px !important; /* Ekran kenarlarındaki boşluk (isteğe göre değiştirebilirsiniz) */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: none !important; /* 820px kısıtlamasını iptal eder */
+      width: 100% !important;
+      padding: 0 50px !important; /* Ekranın sağ/sol kenarından 50px nefes boşluğu bırakır */
+      display: flex !important;
+      justify-content: space-between !important; /* Başlığı sola, menüyü sağa yapıştırır */
+      align-items: center !important;
       height: 70px;
+      box-sizing: border-box !important;
     }
 
     .site-title {
@@ -86,8 +94,6 @@
 
     /* Ana İçerik Alanı */
     main.container {
-      max-width: 820px;
-      margin: 0 auto;
       padding: 50px 20px;
       min-height: 75vh;
     }
@@ -190,7 +196,7 @@
       color: var(--accent);
     }
     
-    /* --- Tekil Yazı Sayfası (Post) Eklemeleri --- */
+    /* Tekil Yazı Sayfası (Post) Eklemeleri */
     .post {
       background-color: var(--card-bg);
       padding: 40px;
