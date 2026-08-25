@@ -1,6 +1,6 @@
 # _config.yml
-title: "SABRİ AYDIN | Blog"
-description: Koyu tonlarda, pratik güncellenebilen GitHub Pages blog teması.
+title: "SABRİ AYDIN"
+description: Geliştiricisinin vakit değerlendirdiği özgür bir oyun alanı.
 url: "https://sabriaydin.github.io"
 baseurl: "/blog"
 
