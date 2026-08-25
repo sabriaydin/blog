@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Parola Defteri - Sürüm 24.08.2026 Sürüm Güncellemesi Yayında!"
-date: 2026-08-19
+date: 2026-08-24
 ---
 
 Parola Defteri projemizde güvenlik katmanını güçlendirmek, kullanıcı deneyimini iyileştirmek ve veri bütünlüğünü korumak adına kapsamlı güncellemeler gerçekleştirdik. İşte bu sürümle birlikte gelen başlıca yenilikler:
