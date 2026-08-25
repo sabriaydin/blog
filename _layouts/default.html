@@ -27,7 +27,7 @@
       --text-muted: #94a3b8;      
       
       /* Vurgular */
-      --accent: #38bdf8;          /* Header alt çizgisi */
+      --accent: #38bdf8;          /* Hover ve detay renkleri */
       --accent-dark: #0284c7;     /* Beyaz kartlar için koyu mavi linkler */
       --border: #334155;          
     }
@@ -54,7 +54,7 @@
     /* Header (Farklı ton ile ayrıştırıldı) */
     .site-header {
       background-color: var(--header-bg);
-      border-bottom: 2px solid var(--accent); /* Header bitişini belli eden ince çizgi */
+      border-bottom: 2px solid var(--border); /* Uyumlu ve sakin bir çizgi rengiyle güncellendi */
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -124,8 +124,8 @@
     }
 
     .post-summary h2 {
-      margin: 0 0 12px 0;
-      font-size: 1.6rem;
+      margin: 0 0 8px 0;
+      font-size: 1.25rem; /* Font boyutu küçültülerek denge sağlandı */
     }
 
     .post-summary h2 a {
@@ -138,21 +138,33 @@
     }
 
     .post-meta {
-      display: inline-block;
-      font-size: 0.85rem;
-      color: var(--accent-dark);
-      background-color: #f1f5f9; /* Beyaz üstünde hafif gri tarih alanı */
-      padding: 6px 12px;
-      border-radius: 6px;
+      display: block;
+      font-size: 0.8rem;
+      color: #64748b; /* Göze batmayan sade gri ton */
+      background-color: transparent; /* Gereksiz arkaplan kutusu kaldırıldı */
+      padding: 0;
+      margin-bottom: 12px;
       font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 20px;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .post-summary p {
-      margin: 0;
+      margin: 0 0 20px 0;
       color: var(--text-dark);
       font-size: 1.05rem;
+    }
+
+    /* Devamını oku bağlantı stili */
+    .read-more {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
     }
 
     /* Sayfalama */
