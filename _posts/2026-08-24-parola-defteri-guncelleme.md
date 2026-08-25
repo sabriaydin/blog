@@ -21,5 +21,5 @@ Yeni güncellemeyle Parola Defteri, verilerinizi koruyan dijital bir kaleye dön
 
 ---
 
-[Parola Defteri V2'yi İndirmek İçin Tıklayın](https://ornek-baglanti-adresi.com/indir)
+[Parola Defteri - Sürüm 2026.08.25 İndirmek İçin Tıklayın](https://ornek-baglanti-adresi.com/indir)
 
