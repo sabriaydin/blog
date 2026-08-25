@@ -54,7 +54,7 @@
     /* Header (Farklı ton ile ayrıştırıldı) */
     .site-header {
       background-color: var(--header-bg);
-      border-bottom: 2px solid var(--border); /* Uyumlu ve sakin bir çizgi rengiyle güncellendi */
+      border-bottom: 2px solid var(--border); 
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -114,7 +114,7 @@
       margin-bottom: 40px;
       border-radius: 12px;
       border-left: 5px solid var(--accent-dark);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Koyu zeminde havada durma efekti */
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -125,7 +125,7 @@
 
     .post-summary h2 {
       margin: 0 0 8px 0;
-      font-size: 1.25rem; /* Font boyutu küçültülerek denge sağlandı */
+      font-size: 1.25rem; 
     }
 
     .post-summary h2 a {
@@ -140,8 +140,8 @@
     .post-meta {
       display: block;
       font-size: 0.8rem;
-      color: #64748b; /* Göze batmayan sade gri ton */
-      background-color: transparent; /* Gereksiz arkaplan kutusu kaldırıldı */
+      color: #64748b; 
+      background-color: transparent; 
       padding: 0;
       margin-bottom: 12px;
       font-family: 'JetBrains Mono', monospace;
@@ -156,7 +156,8 @@
 
     /* Devamını oku bağlantı stili */
     .read-more {
-      display: inline-block;
+      display: block; /* Sağa yaslanabilmesi için block yapıldı */
+      text-align: right; /* Metin sağa hizalandı */
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--accent-dark);
@@ -210,7 +211,7 @@
       padding: 40px 0;
       color: var(--text-muted);
       font-size: 0.85rem;
-      background-color: var(--footer-bg); /* En koyu ton */
+      background-color: var(--footer-bg); 
       border-top: 1px solid var(--border);
     }
 
@@ -234,13 +235,13 @@
 
     .post-title {
       margin: 0 0 15px 0;
-      font-size: 2.4rem;
+      font-size: 1.5rem; /* Başlık boyutu daha zarif hale getirildi (2.4rem -> 1.5rem) */
       color: var(--heading-dark);
     }
 
     .post-content {
-      color: var(--text-dark); /* İçerik rengi siyah yapıldı */
-      font-size: 1.1rem;
+      color: var(--text-dark); 
+      font-size: 1.05rem; /* Metin boyutu ana sayfa ile aynı zarifliğe çekildi (1.1rem -> 1.05rem) */
       line-height: 1.8;
     }
 
@@ -263,7 +264,6 @@
 </head>
 <body>
   
-  <!-- Container div'i kaldırıldı -->
   <header class="site-header">
     <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
     <nav class="site-nav">
