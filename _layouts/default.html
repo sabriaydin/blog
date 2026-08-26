@@ -312,6 +312,22 @@
       display: inline-block;
     }
 
+    /* Görünmez köprü: Mouse menüden alt içeriğe geçerken boşlukta kaybolmasını engeller */
+    .dropdown::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: transparent;
+      display: none;
+    }
+
+    .dropdown:hover::after {
+      display: block;
+    }
+
     .dropdown-content {
       display: none;
       position: absolute;
@@ -342,7 +358,7 @@
       display: block;
     }
 
-    /* --- EKLENEN ARAMA MOTORU STİLLERİ --- */
+    /* --- GÜNCELLENEN ARAMA MOTORU STİLLERİ (Zarif Tasarım) --- */
     .search-container {
       position: relative;
       display: inline-block;
@@ -355,69 +371,98 @@
       color: #ffffff;
       font-size: 1.2rem;
       cursor: pointer;
-      transition: color 0.2s;
+      transition: transform 0.2s ease, color 0.2s ease;
       padding: 0;
     }
 
     .search-icon:hover {
       color: var(--accent);
+      transform: scale(1.1); /* Hafif büyüme efekti */
     }
 
     .search-box {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(15px); /* Aşağıdan yumuşak geliş animasyonu */
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: absolute;
       right: 0;
       top: 100%;
       margin-top: 20px;
       background-color: var(--card-bg);
-      min-width: 280px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      border-radius: 8px;
-      padding: 15px;
+      min-width: 320px; /* Daha geniş alan */
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* Derinlik veren zarif gölge */
+      border-radius: 12px;
+      padding: 20px;
       z-index: 1002;
     }
 
     .search-box.active {
-      display: block;
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .search-box input {
       width: 100%;
-      padding: 10px;
-      border: 1px solid #cbd5e1;
-      border-radius: 4px;
+      padding: 10px 5px;
+      border: none;
+      border-bottom: 2px solid #e2e8f0; /* Sadece alt çizgi */
+      border-radius: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text-dark);
-      background-color: #f8fafc;
+      background-color: transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-bottom: 2px solid var(--accent);
     }
 
     #searchResults {
       list-style: none;
       padding: 0;
-      margin: 10px 0 0 0;
+      margin: 15px 0 0 0;
       max-height: 250px;
       overflow-y: auto;
     }
 
+    /* Özel Scrollbar */
+    #searchResults::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    #searchResults::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 4px;
+    }
+
     #searchResults li {
-      margin-bottom: 5px;
+      margin-bottom: 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    #searchResults li:last-child {
+      border-bottom: none;
     }
 
     #searchResults a {
       color: var(--text-dark);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       display: block;
-      padding: 8px;
-      border-radius: 4px;
-      transition: background 0.2s;
+      padding: 12px 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
     }
 
     #searchResults a:hover {
-      background-color: #f1f5f9;
+      background-color: #f8fafc;
       color: var(--accent-dark);
+      padding-left: 15px; /* Üzerine gelince sağa kayma efekti */
     }
   </style>
   
@@ -485,9 +530,9 @@
       if (filteredData.length === 0) {
         var li = document.createElement("li");
         li.textContent = "Sonuç bulunamadı.";
-        li.style.fontSize = "0.85rem";
+        li.style.fontSize = "0.9rem";
         li.style.color = "#64748b";
-        li.style.padding = "5px";
+        li.style.padding = "10px 5px";
         resultsList.appendChild(li);
       }
     }
