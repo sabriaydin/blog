@@ -258,6 +258,49 @@
       color: var(--accent-dark);
       text-decoration: underline;
     }
+    /* --- EKLENEN 3 SÜTUNLU FOOTER STİLLERİ --- */
+    .footer-columns {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .footer-col {
+      flex: 1; /* Sütunları eşit paylaştırır */
+    }
+
+    .footer-col h4 {
+      color: var(--text-main);
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    /* Mobil cihazlarda sütunları alt alta göstermek için */
+    @media (max-width: 768px) {
+      .footer-columns {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
   </style>
   
   {% seo %}
@@ -272,11 +315,7 @@
     {{ content }}
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Tüm hakları saklıdır.</p>
-    </div>
-  </footer>
+  {% include footer.html %}
 
 </body>
 
