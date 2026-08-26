@@ -4,49 +4,6 @@ title: "Android’de DNS ile Reklam Engelleme"
 date: 2026-08-26
 ---
 
-<style>
-.dns-wrapper {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin: 8px 0 16px 0;
-}
-
-.dns-box {
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    font-family: monospace;
-    font-size: 14px;
-    background: #fafafa;
-    color: #000;
-}
-
-.copy-btn {
-    padding: 6px 10px;
-    font-size: 13px;
-    border: 1px solid #ccc;
-    background: #fff;
-    cursor: pointer;
-}
-
-.copy-btn:active {
-    background: #eee;
-}
-
-.copy-msg {
-    display: inline-block;
-    margin-left: 8px;
-    font-size: 13px;
-    color: green;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.copy-msg.show {
-    opacity: 1;
-}
-</style>
-
 <p>
 Android cihazlarda reklamları azaltmanın en pratik yollarından biri
 <b>Özel DNS (Private DNS)</b> kullanmaktır. Bu yöntem ek uygulama yüklemeden,
@@ -93,6 +50,49 @@ kolayca kullanılabilir.
 Root gerekmez, Play Store politikalarına uygundur ve tek bir ayarla sürekli çalışır.
 Zahmetsiz ve uzun vadeli bir reklam engelleme çözümüdür.
 </p>
+
+<style>
+.dns-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0 16px 0;
+}
+
+.dns-box {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    font-family: monospace;
+    font-size: 14px;
+    background: #fafafa;
+    color: #000;
+}
+
+.copy-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+.copy-btn:active {
+    background: #eee;
+}
+
+.copy-msg {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 13px;
+    color: green;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.copy-msg.show {
+    opacity: 1;
+}
+</style>
 
 <script>
 function copyDNS() {
