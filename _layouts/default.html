@@ -14,16 +14,16 @@
     :root {
       /* Farklı alanlar için farklı tonlar */
       --bg-color: #1e222b;        /* Body: Derin lacivert arkaplan */
-      --header-bg: #12151c;       /* Header: Daha açık gri/mavi ton */
-      --footer-bg: #12151c;       /* Footer: En koyu ton (neredeyse siyah) */
+      --header-bg: #000000;       /* Header (Menü): Net Siyah */
+      --footer-bg: #000000;       /* Footer: Net Siyah */
       
       /* Post ve İçerik (Bağımsız beyaz kağıt efekti) */
-      --card-bg: #ffffff;         
+      --card-bg: #ffffff;         /* Post ve Açılır Menüler: Net Beyaz */
       --text-dark: #1f2937;       /* Okunabilir koyu gri/siyah metin */
-      --heading-dark: #111827;    /* Tam siyah başlıklar */
+      --heading-dark: #000000;    /* Tam siyah başlıklar */
       
       /* Genel Metinler (Header/Footer için) */
-      --text-main: #f8fafc;       
+      --text-main: #ffffff;       /* Net beyaz metin */
       --text-muted: #94a3b8;      
       
       /* Vurgular */
@@ -331,9 +331,9 @@
       display: none;
       position: absolute;
       background-color: var(--card-bg);
-      min-width: 200px; /* Biraz daha geniş ve ferah */
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Daha yumuşak gölge */
-      border: 1px solid #e2e8f0; /* Zarif bir sınır çizgisi */
+      min-width: 200px; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+      border: 1px solid #e2e8f0; 
       z-index: 1001;
       border-radius: 8px;
       overflow: hidden;
@@ -347,8 +347,8 @@
       display: block;
       margin: 0;
       font-size: 0.9rem;
-      border-bottom: 1px solid #f1f5f9;
-      transition: background-color 0.2s ease, padding-left 0.2s ease;
+      border-bottom: 1px solid #e2e8f0;
+      transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
     }
     
     .dropdown-content a:last-child {
@@ -356,14 +356,14 @@
     }
 
     .dropdown-content a:hover {
-      background-color: #f8fafc;
-      color: var(--accent-dark) !important;
-      padding-left: 24px; /* Üzerine gelindiğinde hafif kayma */
+      background-color: #000000; /* Net siyah arka plan */
+      color: #ffffff !important; /* Net beyaz metin */
+      padding-left: 24px; 
     }
 
     .dropdown:hover .dropdown-content {
       display: block;
-      animation: fadeInDown 0.3s ease forwards; /* Zarif açılış animasyonu */
+      animation: fadeInDown 0.3s ease forwards; 
     }
 
     @keyframes fadeInDown {
@@ -371,7 +371,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- GÜNCELLENEN ARAMA MOTORU STİLLERİ (Zarif Tasarım) --- */
+    /* --- GÜNCELLENEN ARAMA MOTORU STİLLERİ --- */
     .search-container {
       position: relative;
       display: flex;
@@ -411,7 +411,7 @@
       border: 1px solid #e2e8f0;
       border-radius: 10px;
       padding: 20px;
-      z-index: 1005; /* Menüyle çakışmayı önlemek için katman yükseltildi */
+      z-index: 1005; 
     }
 
     .search-box.active {
@@ -458,7 +458,7 @@
 
     #searchResults li {
       margin-bottom: 0;
-      border-bottom: 1px solid #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
     }
 
     #searchResults li:last-child {
@@ -476,8 +476,8 @@
     }
 
     #searchResults a:hover {
-      background-color: #f8fafc;
-      color: var(--accent-dark);
+      background-color: #000000; /* Net siyah arka plan */
+      color: #ffffff; /* Net beyaz metin */
       padding-left: 15px; 
     }
   </style>
