@@ -1,16 +1,108 @@
 ---
 layout: post
-title: "HTML Etiketleriyle Örnek Post"
+title: "Android’de DNS ile Reklam Engelleme"
 date: 2026-08-26
 ---
 
-<p>Merhaba, bu yazı <strong>Markdown</strong> yerine doğrudan <em>HTML</em> etiketleri kullanılarak oluşturulmuştur.</p>
+<style>
+    .dns-wrapper {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 8px 0 16px 0;
+    }
 
-<h3>HTML Kullanmanın Avantajları</h3>
+    .dns-box {
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        font-family: monospace;
+        font-size: 14px;
+        background: #fafafa;
+        color: #000;
+    }
+
+    .copy-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+        border: 1px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    .copy-btn:active {
+        background: #eee;
+    }
+
+    .copy-msg {
+        display: inline-block;
+        margin-left: 8px;
+        font-size: 13px;
+        color: green;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .copy-msg.show {
+        opacity: 1;
+    }
+</style>
+
+<p>
+Android cihazlarda reklamları azaltmanın en pratik yollarından biri
+<b>Özel DNS (Private DNS)</b> kullanmaktır. Bu yöntem ek uygulama yüklemeden,
+sistem genelinde birçok reklamı engeller.
+<span></span></p><!--more--><p></p>
+
+<h2>AdGuard DNS Nedir?</h2>
+<p>
+AdGuard DNS, reklam ve takip sunucularını otomatik olarak engelleyen,
+hızlı ve güvenli bir DNS hizmetidir. Android’in yerleşik Özel DNS özelliği ile
+kolayca kullanılabilir.
+</p>
+
+<h2>Android’de AdGuard DNS Kurulumu</h2>
+
+<ol>
+    <li><b>Ayarlar</b> menüsünü açın.</li>
+    <li><b>Ağ ve İnternet</b> bölümüne girin.</li>
+    <li><b>Özel DNS</b> seçeneğine dokunun.</li>
+    <li><b>Özel DNS sağlayıcı ana bilgisayar adı</b> seçeneğini işaretleyin.</li>
+    <li>Aşağıdaki DNS adresini girin:</li>
+</ol>
+
+<div class="dns-wrapper">
+    <div class="dns-box" id="dnsText">dns.adguard-dns.com</div>
+    <button class="copy-btn" onclick="copyDNS()">Kopyala</button>
+    <span class="copy-msg" id="copyMsg">Kopyalandı!</span>
+</div>
+
+<ol start="6">
+    <li><b>Kaydet</b> veya <b>Tamam</b> diyerek işlemi tamamlayın.</li>
+</ol>
+
+<h2>Kurulumdan Sonra Ne Olur?</h2>
 <ul>
-  <li>Özel stiller (style) ve sınıflar (class) atamak çok daha kolaydır.</li>
-  <li>Gelişmiş sayfa yapılarını özgürce tasarlayabilirsiniz.</li>
+    <li>Birçok uygulama ve web reklamı engellenir</li>
+    <li>Sayfalar daha hızlı yüklenir</li>
+    <li>Takip ve izleme istekleri azalır</li>
+    <li>Pil ve veri kullanımı düşer</li>
 </ul>
 
-<p>Örneğin aşağıya özel tasarımlı bir buton ekleyebiliriz:</p>
-<a href="/" style="padding: 10px 15px; background-color: #0284c7; color: white; text-decoration: none; border-radius: 4px;">Ana Sayfaya Dön</a>
+<h2>Neden Bu Yöntem?</h2>
+<p>
+Root gerekmez, Play Store politikalarına uygundur ve tek bir ayarla sürekli çalışır.
+Zahmetsiz ve uzun vadeli bir reklam engelleme çözümüdür.
+</p>
+
+<script>
+    function copyDNS() {
+        const text = document.getElementById("dnsText").innerText;
+        navigator.clipboard.writeText(text);
+
+        const msg = document.getElementById("copyMsg");
+        msg.classList.add("show");
+        setTimeout(() => {
+            msg.classList.remove("show");
+        }, 1500);
+    }
+</script>
