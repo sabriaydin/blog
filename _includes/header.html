@@ -18,7 +18,13 @@
     
     <!-- Arama Butonu ve Kutusu -->
     <div class="search-container">
-      <button class="search-icon" onclick="toggleSearch()" title="Sitede Ara">&#128269;</button>
+      <button class="search-icon" onclick="toggleSearch()" title="Sitede Ara">
+        <!-- Modern SVG Arama İkonu -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
       <div class="search-box" id="searchBox">
         <input type="text" id="searchInput" onkeyup="performSearch()" placeholder="Yazılarda ara...">
         <ul id="searchResults"></ul>
