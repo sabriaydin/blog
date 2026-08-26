@@ -258,6 +258,7 @@
       color: var(--accent-dark);
       text-decoration: underline;
     }
+
     /* --- EKLENEN 3 SÜTUNLU FOOTER STİLLERİ --- */
     .footer-columns {
       display: flex;
@@ -307,8 +308,6 @@
 </head>
 <body>
   
-  <body>
-  
   {% include header.html %}
 
   <main class="container">
@@ -316,18 +315,6 @@
   </main>
 
   {% include footer.html %}
-
-</body>
-
-  <main class="container">
-    {{ content }}
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Tüm hakları saklıdır.</p>
-    </div>
-  </footer>
 
 </body>
 </html>
