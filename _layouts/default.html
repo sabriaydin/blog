@@ -264,14 +264,21 @@
 </head>
 <body>
   
-  <header class="site-header">
-    <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    <nav class="site-nav">
-      <a href="https://sabriaydin.github.io/">Siteye Dön</a>
-      <a href="{{ '/' | relative_url }}">Ana Sayfa</a>
-      <a href="{{ '/hakkimda' | relative_url }}">Hakkımda</a>
-    </nav>
-  </header>
+  <body>
+  
+  {% include header.html %}
+
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+</body>
 
   <main class="container">
     {{ content }}
