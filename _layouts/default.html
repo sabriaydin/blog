@@ -306,13 +306,12 @@
       }
     }
 
-    /* --- EKLENEN AÇILIR MENÜ (DROPDOWN) STİLLERİ --- */
+    /* --- GÜNCELLENEN AÇILIR MENÜ (DROPDOWN) STİLLERİ --- */
     .dropdown {
       position: relative;
       display: inline-block;
     }
 
-    /* Görünmez köprü: Mouse menüden alt içeriğe geçerken boşlukta kaybolmasını engeller */
     .dropdown::after {
       content: '';
       position: absolute;
@@ -332,10 +331,11 @@
       display: none;
       position: absolute;
       background-color: var(--card-bg);
-      min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      min-width: 200px; /* Biraz daha geniş ve ferah */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Daha yumuşak gölge */
+      border: 1px solid #e2e8f0; /* Zarif bir sınır çizgisi */
       z-index: 1001;
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
       top: 100%;
       margin-top: 15px;
@@ -343,25 +343,39 @@
 
     .dropdown-content a {
       color: var(--text-dark) !important;
-      padding: 12px 16px;
+      padding: 14px 20px;
       display: block;
       margin: 0;
       font-size: 0.9rem;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background-color 0.2s ease, padding-left 0.2s ease;
+    }
+    
+    .dropdown-content a:last-child {
+      border-bottom: none;
     }
 
     .dropdown-content a:hover {
-      background-color: #f1f5f9;
+      background-color: #f8fafc;
       color: var(--accent-dark) !important;
+      padding-left: 24px; /* Üzerine gelindiğinde hafif kayma */
     }
 
     .dropdown:hover .dropdown-content {
       display: block;
+      animation: fadeInDown 0.3s ease forwards; /* Zarif açılış animasyonu */
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* --- GÜNCELLENEN ARAMA MOTORU STİLLERİ (Zarif Tasarım) --- */
     .search-container {
       position: relative;
-      display: inline-block;
+      display: flex;
+      align-items: center;
       margin-left: 10px;
     }
 
@@ -369,32 +383,35 @@
       background: none;
       border: none;
       color: #ffffff;
-      font-size: 1.2rem;
       cursor: pointer;
-      transition: transform 0.2s ease, color 0.2s ease;
-      padding: 0;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
 
     .search-icon:hover {
       color: var(--accent);
-      transform: scale(1.1); /* Hafif büyüme efekti */
+      transform: scale(1.05);
     }
 
     .search-box {
       visibility: hidden;
       opacity: 0;
-      transform: translateY(15px); /* Aşağıdan yumuşak geliş animasyonu */
+      transform: translateY(15px);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: absolute;
       right: 0;
       top: 100%;
       margin-top: 20px;
       background-color: var(--card-bg);
-      min-width: 320px; /* Daha geniş alan */
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* Derinlik veren zarif gölge */
-      border-radius: 12px;
+      min-width: 320px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
       padding: 20px;
-      z-index: 1002;
+      z-index: 1005; /* Menüyle çakışmayı önlemek için katman yükseltildi */
     }
 
     .search-box.active {
@@ -407,7 +424,7 @@
       width: 100%;
       padding: 10px 5px;
       border: none;
-      border-bottom: 2px solid #e2e8f0; /* Sadece alt çizgi */
+      border-bottom: 2px solid #e2e8f0;
       border-radius: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
@@ -430,7 +447,6 @@
       overflow-y: auto;
     }
 
-    /* Özel Scrollbar */
     #searchResults::-webkit-scrollbar {
       width: 6px;
     }
@@ -462,7 +478,7 @@
     #searchResults a:hover {
       background-color: #f8fafc;
       color: var(--accent-dark);
-      padding-left: 15px; /* Üzerine gelince sağa kayma efekti */
+      padding-left: 15px; 
     }
   </style>
   
@@ -478,9 +494,8 @@
 
   {% include footer.html %}
 
-  <!-- --- EKLENEN ARAMA MOTORU JAVASCRIPT KODLARI --- -->
+  <!-- --- GÜNCELLENEN ARAMA MOTORU JAVASCRIPT KODLARI --- -->
   <script>
-    // Arama kutusunu açma ve kapama
     function toggleSearch() {
       var searchBox = document.getElementById("searchBox");
       searchBox.classList.toggle("active");
@@ -489,16 +504,17 @@
       }
     }
 
-    // Arama kutusunun dışına tıklandığında kutuyu gizle
+    // Arama kutusunun dışına tıklandığında kapanması için iyileştirilmiş alan kontrolü
     document.addEventListener('click', function(event) {
       var searchBox = document.getElementById("searchBox");
       var searchIcon = document.querySelector(".search-icon");
-      if (!searchBox.contains(event.target) && event.target !== searchIcon) {
+      
+      // SVG ikonunun içine tıklansa bile kapanmasını engeller
+      if (!searchBox.contains(event.target) && !searchIcon.contains(event.target)) {
         searchBox.classList.remove("active");
       }
     });
 
-    // Yazı verilerini çekme
     let searchData = [];
     fetch('{{ "/search.json" | relative_url }}')
       .then(response => response.json())
@@ -506,13 +522,12 @@
         searchData = data;
       });
 
-    // Arama fonksiyonu
     function performSearch() {
       var input = document.getElementById("searchInput").value.toLowerCase();
       var resultsList = document.getElementById("searchResults");
       resultsList.innerHTML = "";
 
-      if (input.length < 2) return; // En az 2 karakter girildiğinde aramayı başlat
+      if (input.length < 2) return; 
 
       var filteredData = searchData.filter(function(post) {
         return post.title.toLowerCase().includes(input);
