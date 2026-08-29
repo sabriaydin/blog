@@ -509,7 +509,7 @@
       var resultsUl = document.getElementById("searchResults");
       resultsUl.innerHTML = "";
 
-      if (input.length < 2) return; 
+      if (input.length === 0) return; 
 
       var filtered = searchData.filter(function(post) {
         return post.title.toLowerCase().includes(input);
