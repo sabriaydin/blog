@@ -11,9 +11,9 @@
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
-      var(--bg-color): #1e293b;        
-      --header-bg: #1c1c1c;       
-      --footer-bg: #1c1c1c;       
+      --bg-color: #1e2127;        /* Orijinal arkaplan rengi */
+      --header-bg: #12151c;       /* İstenen header rengi */
+      --footer-bg: #12151c;       /* İstenen footer rengi */
       --card-bg: #ffffff;         
       --text-dark: #1f2937;       
       --heading-dark: #111827;    
@@ -90,6 +90,63 @@
 
     .site-nav a:hover {
       color: var(--accent);
+    }
+
+    /* --- Açılır Menü (Dropdown) Tasarımı --- */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropbtn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+    
+    .dropbtn:hover {
+      color: var(--accent);
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--header-bg);
+      min-width: 180px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      top: 35px;
+      z-index: 1100;
+      overflow: hidden;
+    }
+    
+    .dropdown-content a {
+      color: var(--text-main) !important;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem !important;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--accent) !important;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     main.container {
@@ -280,7 +337,7 @@
     }
 
     .search-box {
-      display: none; /* js ile görünür olacak */
+      display: none; 
       position: absolute;
       top: 45px;
       right: 0;
@@ -354,5 +411,63 @@
 
   {% include footer.html %}
 
+  <!-- --- Arama İşlevselliği İçin JavaScript --- -->
+  <script>
+    let searchData = [];
+
+    // Veriyi çek
+    function fetchSearchData() {
+      if (searchData.length === 0) {
+        fetch('{{ "/search.json" | relative_url }}')
+          .then(response => response.json())
+          .then(data => { searchData = data; })
+          .catch(error => console.error("Arama verisi yüklenemedi:", error));
+      }
+    }
+
+    // Kutuyu açıp kapat
+    function toggleSearch() {
+      var box = document.getElementById("searchBox");
+      if (box.style.display === "block") {
+        box.style.display = "none";
+      } else {
+        box.style.display = "block";
+        document.getElementById("searchInput").focus();
+        fetchSearchData();
+      }
+    }
+
+    // Arama işlemini gerçekleştir
+    function performSearch() {
+      var input = document.getElementById("searchInput").value.toLowerCase();
+      var resultsUl = document.getElementById("searchResults");
+      resultsUl.innerHTML = "";
+
+      if (input.length < 2) return; // En az 2 karakter girilmesini bekle
+
+      var filtered = searchData.filter(function(post) {
+        return post.title.toLowerCase().includes(input);
+      });
+
+      if(filtered.length === 0) {
+         var li = document.createElement("li");
+         var a = document.createElement("a");
+         a.textContent = "Sonuç bulunamadı.";
+         a.href = "javascript:void(0);";
+         li.appendChild(a);
+         resultsUl.appendChild(li);
+         return;
+      }
+
+      filtered.forEach(function(post) {
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = post.url;
+        a.textContent = post.title;
+        li.appendChild(a);
+        resultsUl.appendChild(li);
+      });
+    }
+  </script>
 </body>
 </html>
