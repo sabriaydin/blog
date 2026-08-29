@@ -11,9 +11,9 @@
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
-      --bg-color: #1e2127;        /* Orijinal arkaplan rengi */
-      --header-bg: #12151c;       /* İstenen header rengi */
-      --footer-bg: #12151c;       /* İstenen footer rengi */
+      --bg-color: #1e2127;        
+      --header-bg: #12151c;       
+      --footer-bg: #12151c;       
       --card-bg: #ffffff;         
       --text-dark: #1f2937;       
       --heading-dark: #111827;    
@@ -124,7 +124,17 @@
       border-radius: 8px;
       top: 35px;
       z-index: 1100;
-      overflow: hidden;
+      overflow: visible; /* Köprü için değiştirildi */
+    }
+
+    /* Dropdown menü için görünmez köprü (Fare boşlukta kaybolmasın diye) */
+    .dropdown-content::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 20px;
     }
     
     .dropdown-content a {
@@ -248,9 +258,10 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
+    /* --- Footer Tasarımı ve 3 Sütun Yapısı --- */
     .site-footer {
       text-align: center;
-      padding: 40px 0;
+      padding: 40px 0 20px 0;
       color: var(--text-muted);
       font-size: 0.85rem;
       background-color: var(--footer-bg); 
@@ -259,8 +270,52 @@
 
     .site-footer a {
       color: var(--accent);
+      text-decoration: none;
     }
     
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      text-align: left;
+      max-width: 1368px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-col h4 {
+      color: var(--text-main);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-top: 30px;
+      width: 100%;
+    }
+
     .post {
       background-color: var(--card-bg);
       padding: 50px;
@@ -411,7 +466,7 @@
 
   {% include footer.html %}
 
-  <!-- --- Arama İşlevselliği İçin JavaScript --- -->
+  <!-- --- Arama ve Etkileşim İşlevleri İçin JavaScript --- -->
   <script>
     let searchData = [];
 
@@ -437,13 +492,21 @@
       }
     }
 
+    // Fare arama alanından çıkınca otomatik kapat
+    document.querySelector('.search-container').addEventListener('mouseleave', function() {
+      var box = document.getElementById("searchBox");
+      if (box) {
+        box.style.display = "none";
+      }
+    });
+
     // Arama işlemini gerçekleştir
     function performSearch() {
       var input = document.getElementById("searchInput").value.toLowerCase();
       var resultsUl = document.getElementById("searchResults");
       resultsUl.innerHTML = "";
 
-      if (input.length < 2) return; // En az 2 karakter girilmesini bekle
+      if (input.length < 2) return; 
 
       var filtered = searchData.filter(function(post) {
         return post.title.toLowerCase().includes(input);
