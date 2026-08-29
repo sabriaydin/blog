@@ -6,29 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
-      /* Farklı alanlar için farklı tonlar */
-      --bg-color: #1e293b;        /* Body: Derin lacivert arkaplan */
-      --header-bg: #1c1c1c;       /* Header: Daha açık gri/mavi ton */
-      --footer-bg: #1c1c1c;       /* Footer: En koyu ton (neredeyse siyah) */
-      
-      /* Post ve İçerik (Bağımsız beyaz kağıt efekti) */
+      var(--bg-color): #1e293b;        
+      --header-bg: #1c1c1c;       
+      --footer-bg: #1c1c1c;       
       --card-bg: #ffffff;         
-      --text-dark: #1f2937;       /* Okunabilir koyu gri/siyah metin */
-      --heading-dark: #111827;    /* Tam siyah başlıklar */
-      
-      /* Genel Metinler (Header/Footer için) */
+      --text-dark: #1f2937;       
+      --heading-dark: #111827;    
       --text-main: #f8fafc;       
       --text-muted: #94a3b8;      
-      
-      /* Vurgular */
-      --accent: #38bdf8;          /* Hover ve detay renkleri */
-      --accent-dark: #0284c7;     /* Beyaz kartlar için koyu mavi linkler */
+      --accent: #38bdf8;          
+      --accent-dark: #0284c7;     
       --border: #334155;          
     }
 
@@ -44,14 +36,12 @@
       min-height: 100vh;
     }
 
-    /* Genel Container */
     .container {
       max-width: 1368px; 
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Header (Farklı ton ile ayrıştırıldı) */
     .site-header {
       background-color: var(--header-bg);
       border-bottom: 2px solid var(--border); 
@@ -86,6 +76,7 @@
 
     .site-nav {
       display: flex;
+      align-items: center;
       gap: 30px;
     }
 
@@ -101,13 +92,11 @@
       color: var(--accent);
     }
 
-    /* Ana İçerik Alanı */
     main.container {
       padding: 60px 20px;
       flex: 1;
     }
 
-    /* Yazı Özetleri (Bağımsız Beyaz Kartlar) */
     .post-summary {
       background-color: var(--card-bg);
       padding: 40px;
@@ -141,7 +130,6 @@
       display: block;
       font-size: 0.8rem;
       color: #64748b; 
-      background-color: transparent; 
       padding: 0;
       margin-bottom: 12px;
       font-family: 'JetBrains Mono', monospace;
@@ -154,10 +142,9 @@
       font-size: 1.05rem;
     }
 
-    /* Devamını oku bağlantı stili */
     .read-more {
-      display: block; /* Sağa yaslanabilmesi için block yapıldı */
-      text-align: right; /* Metin sağa hizalandı */
+      display: block;
+      text-align: right; 
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--accent-dark);
@@ -168,7 +155,6 @@
       text-decoration: underline;
     }
 
-    /* Sayfalama */
     .pagination {
       margin-top: 50px;
       display: flex;
@@ -205,7 +191,6 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Footer (Farklı ton ile ayrıştırıldı) */
     .site-footer {
       text-align: center;
       padding: 40px 0;
@@ -219,7 +204,6 @@
       color: var(--accent);
     }
     
-    /* Tekil Yazı Sayfası (Post) - Bağımsız Beyaz Kart */
     .post {
       background-color: var(--card-bg);
       padding: 50px;
@@ -235,13 +219,13 @@
 
     .post-title {
       margin: 0 0 15px 0;
-      font-size: 1.5rem; /* Başlık boyutu daha zarif hale getirildi (2.4rem -> 1.5rem) */
+      font-size: 1.5rem; 
       color: var(--heading-dark);
     }
 
     .post-content {
       color: var(--text-dark); 
-      font-size: 1.05rem; /* Metin boyutu ana sayfa ile aynı zarifliğe çekildi (1.1rem -> 1.05rem) */
+      font-size: 1.05rem; 
       line-height: 1.8;
     }
 
@@ -258,30 +242,117 @@
       color: var(--accent-dark);
       text-decoration: underline;
     }
+
+    pre, code {
+      background-color: #282c34;
+      color: #98c379;
+      border-radius: 4px;
+      font-family: "Fira Code", Consolas, Monaco, monospace;
+      padding: 2px 4px;
+    }
+
+    pre {
+      padding: 15px;
+      overflow-x: auto;
+      border: 1px solid #3e4451;
+      border-left: 4px solid #e06c75;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* --- Şık Arama Kutusu Tasarımı --- */
+    .search-container {
+      position: relative;
+    }
+
+    .search-icon {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s ease;
+    }
+
+    .search-icon:hover {
+      color: var(--accent);
+    }
+
+    .search-box {
+      display: none; /* js ile görünür olacak */
+      position: absolute;
+      top: 45px;
+      right: 0;
+      width: 320px;
+      background-color: var(--header-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      z-index: 1100;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 10px 12px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      border-radius: 6px;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease;
+    }
+
+    #searchInput:focus {
+      border-color: var(--accent);
+    }
+
+    #searchResults {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0 0 0;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    #searchResults li {
+      border-bottom: 1px solid var(--border);
+    }
+
+    #searchResults li:last-child {
+      border-bottom: none;
+    }
+
+    #searchResults li a {
+      display: block;
+      padding: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      border-radius: 4px;
+    }
+
+    #searchResults li a:hover {
+      color: var(--accent);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
   </style>
   
   {% seo %}
 </head>
 <body>
   
-  <header class="site-header">
-    <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    <nav class="site-nav">
-      <a href="https://sabriaydin.github.io/">Siteye Dön</a>
-      <a href="{{ '/' | relative_url }}">Ana Sayfa</a>
-      <a href="{{ '/hakkimda' | relative_url }}">Hakkımda</a>
-    </nav>
-  </header>
+  {% include header.html %}
 
   <main class="container">
     {{ content }}
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Tüm hakları saklıdır.</p>
-    </div>
-  </footer>
+  {% include footer.html %}
 
 </body>
 </html>
