@@ -482,11 +482,24 @@
       }
     }
 
-    // Fare arama alanından çıkınca otomatik kapat
-    document.querySelector('.search-container').addEventListener('mouseleave', function() {
-      var box = document.getElementById("searchBox");
-      if (box) {
-        box.style.display = "none";
+    // Fare arama alanından çıkınca otomatik kapat (gecikmeli: ikon ile kutu arasında
+    // geometrik boşluk/genişlik farkı olsa bile, kısa süre içinde geri dönülürse kapanmaz)
+    var searchCloseTimer = null;
+    var searchContainerEl = document.querySelector('.search-container');
+
+    searchContainerEl.addEventListener('mouseleave', function() {
+      searchCloseTimer = setTimeout(function() {
+        var box = document.getElementById("searchBox");
+        if (box) {
+          box.style.display = "none";
+        }
+      }, 250);
+    });
+
+    searchContainerEl.addEventListener('mouseenter', function() {
+      if (searchCloseTimer) {
+        clearTimeout(searchCloseTimer);
+        searchCloseTimer = null;
       }
     });
 
