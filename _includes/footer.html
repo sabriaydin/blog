@@ -4,14 +4,11 @@
   <div class="footer-columns">
     <div class="footer-col">
       <h4>Hakkında</h4>
-      <p>Burası 1. sütun. Sitenizle ilgili kısa bir açıklama veya vizyonunuzu yazabilirsiniz.</p>
+      <p style="text-align: justify;">Web sayfamız dijital hayatı kolaylaştırmak üzere düşünen, araştıran ve üreten bir oluşumun eseridir. Belli kalıplara bağlı kalmadan hareket eden, dijital dünyada gerektiğinde ciddi ama bir o kadar da gülüp eğlenmeyi bilen; bilgiye değer veren ve faydalı içerikler sunmayı amaçlayan bir anlayışla yayın yapmaktadır.</p>
     </div>
     <div class="footer-col">
-      <h4>Hızlı Bağlantılar</h4>
-      <ul>
-        <li><a href="{{ '/' | relative_url }}">Ana Sayfa</a></li>
-        <li><a href="{{ '/hakkimda' | relative_url }}">Hakkımda</a></li>
-      </ul>
+      <h4>Bilgi</h4>
+      <p id="degisen-yazi"></p>
     </div>
     <div class="footer-col">
       <h4>İletişim</h4>
@@ -25,3 +22,19 @@
   </div>
     
 </footer>
+
+<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" onload="
+    const yazilar = [
+        'Web sitemiz ve projelerimiz tek bir bağımsız yapımcı tarafından geliştirilmektedir.',
+        'Tarafımızdan üretilen içerik dosyalarını güvenlik açısından başka sitelerden indirmeyiniz! Lütfen (ç)alıntı yapılan içeriklerimizi bize bildirin.',
+        'Bağımsız yazılım projelerimizi indirmeden önce lütfen Virüs Total raporunu inceleyiniz. Virüs Total raporu ulaşılamayan projeler için iletişime geçiniz.',
+        'Geliştiricimiz sunulan projeler için hiç bir zaman sizden bağış veya kullanım ücreti talep etmemektedir! Lütfen dolandırıcılara itibar etmeyin ve bize bildirin.',
+        'Web sayfamız ve yazılım projelerimiz profesyonel bir şirkete ait değildir. Herşey kişisel hobi olarak ilerlenen bir yolun ürünüdür.'
+    ];
+    
+    const rastgeleYazi = yazilar[Math.floor(Math.random() * yazilar.length)];
+    document.getElementById('degisen-yazi').innerHTML = rastgeleYazi;
+    
+    /* İşlem bitince bu görünmez pikseli DOM'dan temizler */
+    this.remove();
+" style="display:none;">
